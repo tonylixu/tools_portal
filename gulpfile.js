@@ -120,7 +120,7 @@ function moveHTML() {
 /** Gulp move image task. Move all images to /dist/images/ by calling helper method */
 gulp.task('moveImg', function() {
   return moveImg();
-})
+});
 
 /** Helper method to move all images in /app/images/ to /dist/images/ dir */
 function moveImg() {
@@ -129,4 +129,12 @@ function moveImg() {
 }
 
 /** Gulp move scripts task. Move all scripts to /dist/scripts by calling helper method */
+gulp.task('moveScripts', function() {
+  return moveScripts();
+});
 
+/** Helper method to move all scripts in /app/scripts to /dist/scripts dir */
+function moveScripts() {
+  return gulp.src(PATHS.scripts_in)
+      .pipe(gulp.dest(PATHS.scripts_out))
+}
