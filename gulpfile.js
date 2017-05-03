@@ -15,6 +15,7 @@ const PATHS = {
 };
 
 var gulp = require('gulp');
+var serve = require('gulp-serve');
 var crisper = require('gulp-crisper');
 var minify = require('gulp-htmlmin');
 var gulpif = require('gulp-if');
@@ -156,3 +157,8 @@ function uglifyJS() {
   console.log("=== UGLIFY ===");
   return uglify({preserveComments: 'some'});
 }
+
+/** 
+ * Gulp serve task. Provide connect-server functionality.
+ */
+gulp.task('serve', serve('dist'));
