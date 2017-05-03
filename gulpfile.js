@@ -116,3 +116,17 @@ function moveHTML() {
       .pipe(gulpif('*.html', minifyHTML()))
       .pipe(gulp.dest(PATHS.html_out));
 }
+
+/** Gulp move image task. Move all images to /dist/images/ by calling helper method */
+gulp.task('moveImg', function() {
+  return moveImg();
+})
+
+/** Helper method to move all images in /app/images/ to /dist/images/ dir */
+function moveImg() {
+  return gulp.src(PATHS.img_in)
+      .pipe(gulp.dest(PATHS.img_out));
+}
+
+/** Gulp move scripts task. Move all scripts to /dist/scripts by calling helper method */
+
