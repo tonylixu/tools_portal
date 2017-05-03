@@ -1,9 +1,17 @@
 const PATHS = {
   // Input paths
+  admin_in: 'app/admin/**/*',
+  elements_in: 'app/elements/elements.html',
   html_in: 'app/*.html',
+  img_in: 'app/images/**/*',
+  scripts_in: 'app/scripts/**/*',
 
   // Output paths
-  html_out: 'dist/'
+  admin_out: 'dist/admin',
+  elements_out: 'dist/elements',
+  html_out: 'dist/',
+  img_out: 'dist/images',
+  scripts_out: 'dist/scripts'
 };
 
 var gulp = require('gulp');
@@ -106,7 +114,7 @@ function moveAdmin() {
 }
 
 /** Gulp move HTML task. Move all HTML files in /app by calling helper method */
-gulp.task('moveHtml', function() {
+gulp.task('moveHTML', function() {
   return moveHTML();
 });
 
@@ -137,4 +145,14 @@ gulp.task('moveScripts', function() {
 function moveScripts() {
   return gulp.src(PATHS.scripts_in)
       .pipe(gulp.dest(PATHS.scripts_out))
+}
+
+function minifyHTML() {
+  console.log("=== MINIFY ===");
+  return minify({collapseWhitespace: true})
+}
+
+function uglifyJS() {
+  console.log("=== UGLIFY ===");
+  return uglify({preserveComments: 'some'});
 }
