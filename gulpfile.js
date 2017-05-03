@@ -2,6 +2,7 @@ const PATHS = {
   // Input paths
   admin_in: 'app/admin/**/*',
   elements_in: 'app/elements/elements.html',
+  css_in: 'app/css/*.css',
   html_in: 'app/*.html',
   img_in: 'app/images/**/*',
   scripts_in: 'app/scripts/**/*',
@@ -9,6 +10,7 @@ const PATHS = {
   // Output paths
   admin_out: 'dist/admin',
   elements_out: 'dist/elements',
+  css_out: 'dist/css',
   html_out: 'dist/',
   img_out: 'dist/images',
   scripts_out: 'dist/scripts'
@@ -58,7 +60,7 @@ gulp.task('clean', function() {
  * 4) Move images to dist
  * 5) scripts to /dist
  */
-gulp.task('build', ['vulcanize', 'moveAdmin', 'moveHTML', 'moveImg', 'moveScripts'], function (){
+gulp.task('build', ['vulcanize', 'moveAdmin', 'moveHTML', 'moveCSS', 'moveImg', 'moveScripts'], function (){
 
 });
 
@@ -124,6 +126,17 @@ function moveHTML() {
   return gulp.src(PATHS.html_in)
       .pipe(gulpif('*.html', minifyHTML()))
       .pipe(gulp.dest(PATHS.html_out));
+}
+
+/** Gulp move CSS tasks. Move all css files in /app/css to /dist/css by calling helper method */
+gulp.task('moveCSS', function() {
+  return moveCSS();
+})
+
+/** Helper method to move all CSS files from /app/css to /dist/css */
+function moveCSS() {
+  return gulp.src(PATHS.css_in)
+      .pipe(gulp.dest(PATHS.css_out));
 }
 
 /** Gulp move image task. Move all images to /dist/images/ by calling helper method */
