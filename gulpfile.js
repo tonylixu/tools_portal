@@ -104,3 +104,15 @@ function moveAdmin() {
       .pipe(gulpif('*.html', minifyHTML()))
       .pipe(gulp.dest(PATHS.admin_out));
 }
+
+/** Gulp move HTML task. Move all HTML files in /app by calling helper method */
+gulp.task('moveHtml', function() {
+  return moveHTML();
+});
+
+/** Helper method to move all HTML files /app to the /dist dir */
+function moveHTML() {
+  return gulp.src(PATHS.html_in)
+      .pipe(gulpif('*.html', minifyHTML()))
+      .pipe(gulp.dest(PATHS.html_out));
+}
