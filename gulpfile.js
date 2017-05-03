@@ -92,3 +92,15 @@ function vulcanizeHTML() {
     stripComments: true
   })
 }
+
+/** Gulp move admin task. Move the /admin folders to dist */
+gulp.task('moveAdmin', function () {
+  return moveAdmin();
+})
+
+/** Helper method to move all HTML files in /app/admin to /dist/admin */
+function moveAdmin() {
+  return gulp.src(PATHS.admin_in)
+      .pipe(gulpif('*.html', minifyHTML()))
+      .pipe(gulp.dest(PATHS.admin_out));
+}
