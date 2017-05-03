@@ -57,3 +57,38 @@ gulp.task('build', ['vulcanize', 'moveAdmin', 'moveHTML', 'moveImg', 'moveScript
 gulp.task('vulcanize', function() {
   return vulcanizeImports();
 });
+
+/**
+ * Vulcanize the given HTML file.
+ * 
+ * This wil use the 'vulcanize' tool to inline all HTML imports in a given file,
+ * reduce network activity
+ * 
+ * Order of Events:
+ * 1) Pipes to source HTML file to 'vulcanize' with args. Inlines the HTML/CSS/JS and strips all comments (except @license decelerations)
+ * 2) Pipes to 'crisper' to separate the JS into it's own file for CSP compliance aned reduction of HTML parser load
+ * 3) Pipes to 'HTMLminifier' to minify the HTML code (remove whitespaces, etc). ONLY MINIFIES IF .HTML
+ * 4) Pipes to 'uglify' to minify the JS code. ONLY MINIFIES IF .JS
+ * 5) Pipes to output to the specified directory
+ */
+function vulcanizeImports() {
+  return gulp.src(PATHS.elements_in)
+        .pipe(vulcanizeHTML())
+        .pipe(crisper())
+        .pipe(gulpif('*.html', minifyHTML()))
+        .pipe(gulpif('*.js', uglifyJS()))
+        .pipe(gulp.dest(PATHS.elements_out))
+}
+
+/**
+ * vulcanize: Reduce an HTML file and its dependent HTML Imports into one file
+ * source: https://www.npmjs.com/package/vulcanize
+ */
+function vulcanizeHTML() {
+  console.log("=== VULCANIZE ===");
+  return vulcanize({
+    inlineScripts: true,
+    inlineCss: true,
+    stripComments: true
+  })
+}
