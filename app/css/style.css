@@ -23,23 +23,23 @@ body {
 }
 
 .container {
-                height: 100%;
-                @apply(--layout-vertical);
-            }
+  height: 100%;
+  @apply(--layout-vertical);
+}
 
-            .actions {
-                background-color: var(--zebra-medium-gray);
-            }
+.actions {
+  background-color: var(--zebra-medium-gray);
+}
 
-            .actions > paper-icon-button {
-                color: white;
-            }
+.actions>paper-icon-button {
+  color: white;
+}
 
-            .editor-preview {
-                @apply(--layout-flex);
-                @apply(--layout-horizontal);
-            }
+.editor-preview {
+  @apply(--layout-flex);
+  @apply(--layout-horizontal);
+}
 
-            .editor {
-                width: 98%;
-            }
+.editor {
+  width: 98%;
+}
