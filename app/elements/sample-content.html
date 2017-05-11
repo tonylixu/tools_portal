@@ -41,8 +41,35 @@
       ],
       ready: function () {
         this.style.display = 'block';
+      },
+      _randomString: function (size) {
+        var ls = this._lorem_ipsum_strings;
+        var s = '';
+        do {
+          s += ls[Math.floor(Math.random() * ls.length)];
+          size--;
+        } while (size > 0);
+        return s;
+      },
+      _randomLetter: function () {
+        return String.fromCharCode(65 + Math.floor(Math.random() * 26));
+      },
+      _render: function (size, label, padding, margin, boxShadow) {
+        var html = '';
+        for (var i = 0; i < size; i++) {
+          html +=
+            '<div style="box-shadow: ' + boxShadow + '; padding: ' + padding + '; margin: ' + margin +
+            '; border-radius: 5px; background-color: #fff; color: #757575;">' +
+            '<div style="display: inline-block; height: 64px; width: 64px; border-radius: 50%; background: #ddd; line-height: 64px; font-size: 30px; color: #555; text-align: center;">' +
+            this._randomLetter() + '</div>' +
+            '<div style="font-size: 22px; margin: 16px 0; color: #212121;">' + this.label + ' ' + this._randomString() +
+            '</div>' +
+            '<p style="font-size: 16px;">' + this._randomString() + '</p>' +
+            '<p style="font-size: 14px;">' + this._randomString(3) + '</p>' +
+            '</div>';
+          this.innerHTML = html;
+        }
       }
-    ]
     });
   </script>
 
