@@ -1,2 +1,11 @@
 <dom-module id="user-profile">
+  <style>
+    paper-card {}
+  </style>
+
+  <template>
+    <paper-card heading="{{name}}" image="{{image}}">
+      <div class="card-content">{{description}}</div>
+    </paper-card>
+  </template>
 </dom-module>
