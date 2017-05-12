@@ -6,18 +6,29 @@
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../../bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/social-icons.html">
 
 <!-- 'Wrapper' for the 'Home' section of the Portal. A left navbar switches
   between each section. -->
 <dom-module id="portal-home">
   <style is="custom-style" include="iron-flex iron-positioning"></style>
   <style>
-    paper-item {
+    paper-icon-item.fancy {
       font-size: 14px;
+      --paper-item-focused: {
+        background: var(--paper-amber-500);
+        font-weight: bold;
+      }
+      ;
+      --paper-item-focused-before: {
+        opacity: 0;
+      }
+      ;
     }
 
     iron-pages {
-      margin: 8px 16px;
+      margin: 18px 26px;
     }
 
     .default-container {
@@ -30,16 +41,18 @@
     <paper-drawer-panel>
       <paper-header-panel drawer>
         <paper-menu selected="{{selected}}">
-          <paper-item>Initiatives</paper-item>>
-          <paper-item>Our Team</paper-item>
+          <paper-icon-item class="fancy">
+            <iron-icon icon="maps:local-library"></iron-icon>Initiatives</paper-icon-item>
+          <paper-icon-item class="fancy">
+            <iron-icon icon="social:person"></iron-icon>Our Team</paper-icon-item>
         </paper-menu>
       </paper-header-panel>
       <paper-header-panel main>
         <paper-icon-button icon="menu" paper-drawer-toggle>
         </paper-icon-button>
         <iron-pages class="page-container" selected="{{selected}}">
-          <paper-material class="default-container"></paper-material>
-          <paper-material class="default-container"></paper-material>
+          <paper-material class="default-container">Initiatives are</paper-material>
+          <paper-material class="default-container">Team members</paper-material>
         </iron-pages>
       </paper-header-panel>
     </paper-drawer-panel>
@@ -53,14 +66,13 @@
          * The currently selected page.
          * Default to 0.
          */
-         selected: {
-           type: Number,
-           value: 0
-         }
+        selected: {
+          type: Number,
+          value: 0
+        }
       },
 
-      attached: function() {
-      },
+      attached: function () {},
     });
-    </script>
+  </script>
 </dom-module>
