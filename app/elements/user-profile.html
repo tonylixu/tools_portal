@@ -8,4 +8,24 @@
       <div class="card-content">{{description}}</div>
     </paper-card>
   </template>
+  <script>
+    Polymer({
+      is: 'user-profile',
+
+      properties: {
+        description: {
+          type: String,
+        },
+      
+        name: {
+          type: String,
+        },
+
+        image: {
+          type: String,
+          value: "../image/avatars/placeholder.png"
+        }
+      }
+    });
+    </script>
 </dom-module>
