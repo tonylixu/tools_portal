@@ -25,10 +25,11 @@
         opacity: 0;
       }
       ;
+      --paper-item-icon-width: 50px;
     }
 
     iron-pages {
-      margin: 18px 26px;
+      margin: 8px 16px;
     }
 
     .default-container {
@@ -38,13 +39,15 @@
     }
   </style>
   <template>
-    <paper-drawer-panel>
+    <paper-drawer-panel drawer-width="200px">
       <paper-header-panel drawer>
         <paper-menu selected="{{selected}}">
           <paper-icon-item class="fancy">
-            <iron-icon icon="maps:local-library"></iron-icon>Initiatives</paper-icon-item>
+            <iron-icon src="../../images/icons/initiative.png" item-icon></iron-icon>Initiatives</paper-icon-item>
           <paper-icon-item class="fancy">
-            <iron-icon icon="social:person"></iron-icon>Our Team</paper-icon-item>
+            <iron-icon src="../../images/icons/initiative.png" item-icon></iron-icon>Our Team
+            <!--iron-icon icon="social:person"></iron-icon>Our Team</paper-item-->
+          </paper-icon-item>
         </paper-menu>
       </paper-header-panel>
       <paper-header-panel main>
