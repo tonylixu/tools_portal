@@ -1,0 +1,26 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+
+<!--
+    'Wrapper' for the 'News' section of the Portal
+    Loads the list of news items from the DB and displays them as a list of cards
+-->
+<dom-module id="portal-news-list">
+  <style is="custom-style" include="iron-flex iron-positioning"></style>
+  <template>
+    <div class="layout vertical">
+      <div class="separator"></div>
+      <template is="dom-repeat" items="{{newsItems}}">
+        <paper-card class="card full-width" heading="{{item.title}}">
+          <div class="card-content">
+            <div>{{item.contents}}</div>
+            <div style="text-align: right">{{_formatDate(item.date)}}</div>
+          </div>
+        </paper-card>
+      </template>
+    </div>
+  </template>
+  
+</dom-module>
