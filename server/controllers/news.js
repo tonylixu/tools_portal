@@ -51,5 +51,12 @@ exports.createNewsItem = function (req, res) {
  * @param res The response object sent over from the route.
  */
 exports.getAll = function (req, res) {
-  // Find all news item, but 
+  // Find all news item, but only return the title, contents and date.
+  NewsItem.find({}, {_id: false, title: true, contents: true, date: true}, function (err, news) {
+    // If there was an error during the find, send back an error.
+    if (err)
+      res.status(404).send({message: "Could not retrieve News.", errors: err});
+    else // Otherwise, send back the items
+      res.status(200).send(news);
+  });
 }
