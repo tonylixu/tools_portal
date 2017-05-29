@@ -37,7 +37,7 @@ function commonValidator(res, schema, params) {
       valid = true;
     // Otherwise, the params are invalid, and we should send back an error to the client
     else {
-      res.status(400)send({message: "Missing/Bad params.", errors: err});
+      res.status(400).send({message: "Missing/Bad params.", errors: err});
       valid = false;
     }
   });

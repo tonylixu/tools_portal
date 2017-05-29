@@ -64,6 +64,7 @@ var dbOptions = {
   }
 };
 
+mongoose.set('debug', true)
 mongoose.connect(config.db.tools.path, dbOptions);
 mongoose.connection.on('error', function () {
   logger.error("ERROR CONNECTING TO DB. Check that the DB is online.");
