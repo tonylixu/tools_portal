@@ -69,3 +69,7 @@ mongoose.connection.on('error', function () {
   logger.error("ERROR CONNECTING TO DB. Check that the DB is online.");
   process.exit(1);
 })
+
+// ============================================ END SETUP =========================================================== //
+app.listen(port);
+console.log('Server is running on port: ' + port);
