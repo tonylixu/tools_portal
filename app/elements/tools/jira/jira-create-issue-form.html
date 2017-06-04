@@ -55,14 +55,22 @@
         <div class="separator"></div>
         <span>Description</span>
         <div class="layout horizontal">
-                    <iron-autogrow-textarea id="description" class="flex" rows="5" required></iron-autogrow-textarea>
-                </div>
-                <div class="separator"></div>
-                <div class="layout horizontal">
-                    <paper-button id="submit" class="button submit" on-tap="submit" raised>Submit</paper-button>
-                </div>
+          <iron-autogrow-textarea id="description" class="flex" rows="5" required></iron-autogrow-textarea>
+        </div>
+        <div class="separator"></div>
+        <div class="layout horizontal">
+          <paper-button id="submit" class="button submit" on-tap="submit" raised>Submit</paper-button>
+        </div>
       </form>
     </paper-material>
+
+    <paper-dialog id="dialog" modal>
+      <paper-spinner id="spinner"></paper-spinner>
+    </paper-dialog>
+
+    <paper-dialog id="helpDialog" no-overlap horizontal-align="right" vertical-align="top">
+      <h2>Request vs Change</h2>
+    </paper-dialog>
 
   </template>
 </dom-module>
