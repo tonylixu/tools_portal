@@ -10,3 +10,38 @@
 <link rel="import" href="../../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../../bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="../../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+
+<!--
+    An element for creating an issue on JIRA
+-->
+<dom-module id="jira-create-issue-form">
+  <template>
+    <style is="custom-style" include="iron-flex iron-positioning iron-flex-alignment"></style>
+    <style>
+      .container {
+        margin: 16px;
+        background-color: white;
+      }
+
+      form {
+        margin: 8px;
+      }
+
+      .separator {
+        margin: 8px 0;
+      }
+
+      iron-autogrow-textarea {
+        width: 100%;
+      }
+
+      .button {
+        color: white;
+      }
+
+      .submit {
+        background-color: var(--zebra-blue);
+      }
+    </style>
+  </template>
+</dom-module>
