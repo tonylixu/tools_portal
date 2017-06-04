@@ -43,5 +43,26 @@
         background-color: var(--zebra-blue);
       }
     </style>
+    <paper-material class="layout vertical container">
+      <div class="layout horizontal end-justified">
+        <paper-icon-button id="help" icon="help" on-tap="_openHelp"></paper-icon-button>
+      </div>
+
+      <form id="issueForm" is="iron-form" method="post" action="/api/jira/issue">
+        <vaadin-combo-box id="issueType" class="flex" items="[[issueTypes]]" label="Issue Type" required></vaadin-combo-box>
+        <vaadin-combo-box id="tool" class="flex" items="[[tools]]" label="Tool" required></vaadin-combo-box>
+        <paper-input id="summary" class="flex" label="Summary" required></paper-input>
+        <div class="separator"></div>
+        <span>Description</span>
+        <div class="layout horizontal">
+                    <iron-autogrow-textarea id="description" class="flex" rows="5" required></iron-autogrow-textarea>
+                </div>
+                <div class="separator"></div>
+                <div class="layout horizontal">
+                    <paper-button id="submit" class="button submit" on-tap="submit" raised>Submit</paper-button>
+                </div>
+      </form>
+    </paper-material>
+
   </template>
 </dom-module>
