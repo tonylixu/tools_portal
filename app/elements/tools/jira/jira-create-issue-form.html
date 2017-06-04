@@ -1,0 +1,76 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/iron-autogrow-textarea/iron-autogrow-textarea.html">
+<link rel="import" href="../../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../../bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="../../../bower_components/vaadin-combo-box/vaadin-combo-box.html">
+
+<!--
+    An element for creating an issue on JIRA
+-->
+<dom-module id="jira-create-issue-form">
+  <template>
+    <style is="custom-style" include="iron-flex iron-positioning iron-flex-alignment"></style>
+    <style>
+      .container {
+        margin: 16px;
+        background-color: white;
+      }
+
+      form {
+        margin: 8px;
+      }
+
+      .separator {
+        margin: 8px 0;
+      }
+
+      iron-autogrow-textarea {
+        width: 100%;
+      }
+
+      .button {
+        color: white;
+      }
+
+      .submit {
+        background-color: var(--zebra-blue);
+      }
+    </style>
+    <paper-material class="layout vertical container">
+      <div class="layout horizontal end-justified">
+        <paper-icon-button id="help" icon="help" on-tap="_openHelp"></paper-icon-button>
+      </div>
+
+      <form id="issueForm" is="iron-form" method="post" action="/api/jira/issue">
+        <vaadin-combo-box id="issueType" class="flex" items="[[issueTypes]]" label="Issue Type" required></vaadin-combo-box>
+        <vaadin-combo-box id="tool" class="flex" items="[[tools]]" label="Tool" required></vaadin-combo-box>
+        <paper-input id="summary" class="flex" label="Summary" required></paper-input>
+        <div class="separator"></div>
+        <span>Description</span>
+        <div class="layout horizontal">
+          <iron-autogrow-textarea id="description" class="flex" rows="5" required></iron-autogrow-textarea>
+        </div>
+        <div class="separator"></div>
+        <div class="layout horizontal">
+          <paper-button id="submit" class="button submit" on-tap="submit" raised>Submit</paper-button>
+        </div>
+      </form>
+    </paper-material>
+
+    <paper-dialog id="dialog" modal>
+      <paper-spinner id="spinner"></paper-spinner>
+    </paper-dialog>
+
+    <paper-dialog id="helpDialog" no-overlap horizontal-align="right" vertical-align="top">
+      <h2>Request vs Change</h2>
+    </paper-dialog>
+
+  </template>
+</dom-module>
