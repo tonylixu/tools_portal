@@ -16,8 +16,8 @@ config.httpsPort = 8443;
 config.secretKey = "xxxx-xxxx-xxxx";
 
 // MongoDB config
-config.db.username = "xxx";
-config.db.password = "xxx";
+config.db.username = "portalServer";
+config.db.password = "T00lsTeam";
 config.db.tools.path = "mongodb://localhost:27017/portal";
 
 // JIRA Config
